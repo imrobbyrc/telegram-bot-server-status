@@ -1,0 +1,14 @@
+[Unit]
+Description=uWSGI instance to serve Telegram Bot
+After=network.target
+
+[Service]
+User=sysadmin
+Group=sysadmin
+WorkingDirectory=/app/web/bot-data
+Environment="PATH=/app/web/bot-data/venv/bin"
+ExecStart=/app/web/bot-data/venv/bin/uwsgi --ini bot.ini
+
+[Install]
+WantedBy=multi-user.target
+
